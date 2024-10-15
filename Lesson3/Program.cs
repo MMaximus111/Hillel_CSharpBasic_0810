@@ -1,5 +1,6 @@
 ﻿internal class Program
 {
+    // Hello world!
     private static void Main(string[] args)
     {
         // Це я зробив з використанням циклу. Нижче закоментований код без використанння циклу
