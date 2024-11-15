@@ -1,6 +1,6 @@
 ﻿namespace Lesson9;
 
-public class User
+internal class User
 {
     public string Name { get; set; }
     

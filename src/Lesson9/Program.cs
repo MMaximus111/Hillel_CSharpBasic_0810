@@ -88,6 +88,8 @@ foreach (var group in customAgregation)
 
 Console.WriteLine("Program finished");
 
+User user = new User();
+
 
 static void BubbleSort(int[] array)
 {
