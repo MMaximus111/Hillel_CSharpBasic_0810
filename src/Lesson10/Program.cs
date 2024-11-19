@@ -28,7 +28,7 @@ String text = new String("Усатенко  Максим       Володими�
 
 // foreach (string splittedStringPart in trimmedText.Split('o'))
 // {
-   //  Console.WriteLine(splittedStringPart);
+//  Console.WriteLine(splittedStringPart);
 // }
 
 Console.OutputEncoding = System.Text.Encoding.UTF8;
@@ -90,15 +90,15 @@ Console.OutputEncoding = System.Text.Encoding.UTF8;
 //
 // Console.WriteLine(sb.ToString());
 
-Car car = new Car(CarColor.Blue);
-
-// car.CurrentSpeed = 100;
-
-Console.WriteLine(car.CurrentSpeed);
-Console.WriteLine(Car.MaxSpeed);
-Console.WriteLine(car.Color);
-
-Console.WriteLine(Car.ValidateCarPlate("AA1234AA"));
+// Car car = new Car(CarColor.Blue);
+//
+// // car.CurrentSpeed = 100;
+//
+// Console.WriteLine(car.CurrentSpeed);
+// Console.WriteLine(Car.MaxSpeed);
+// Console.WriteLine(car.Color);
+//
+// Console.WriteLine(Car.ValidateCarPlate("AA1234AA"));
 
 
 // int z = 5;
@@ -130,3 +130,13 @@ Console.WriteLine(Car.ValidateCarPlate("AA1234AA"));
 // }
 //
 //
+
+PrintNumbers(2, 4, 6, 7, 8);
+
+void PrintNumbers(params int[] numbers)
+{
+    foreach (int number in numbers)
+    {
+        Console.WriteLine(number);
+    }
+}
