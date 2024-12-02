@@ -1,7 +1,7 @@
 ﻿
 using Lesson14;
 
-Vehicle vehicle = new Vehicle(CarColor.Blue);
+    // Vehicle vehicle = new Vehicle(CarColor.Blue);
 
 Console.WriteLine("fdfdfdf");
 
@@ -103,17 +103,17 @@ class MyTask
 
     public bool IsCompleted { get; init; }
     
-    public Result AddSubtask(MyTask subtask)
-    {
-        if (IsCompleted)
-        {
-            return Result.Error("Cannot add subtask to completed task");
-        }
-        
-        Name = $"{Name} - {subtask.Name}";
-        
-        return Result.Success();
-    }
+    // public Result AddSubtask(MyTask subtask)
+    // {
+    //     if (IsCompleted)
+    //     {
+    //         return Result.Error("Cannot add subtask to completed task");
+    //     }
+    //     
+    //     Name = $"{Name} - {subtask.Name}";
+    //     
+    //     return Result.Success();
+    // }
 }
 //
 // class Singleton

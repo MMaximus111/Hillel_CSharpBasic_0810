@@ -1,12 +1,13 @@
-var builder = WebApplication.CreateBuilder(args);
+using Lesson12.Asp.Api;
 
-// Add services to the container.
-// Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
+WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
+
+
 builder.Services.AddOpenApi();
+builder.Services.AddSingleton<IWeatherProvider, BbcWeatherProvider>();
 
-var app = builder.Build();
+WebApplication app = builder.Build();
 
-// Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
     app.MapOpenApi();
@@ -14,24 +15,17 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
-var summaries = new[]
-{
-    "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
-};
 
-app.MapGet("/weatherforecast", () =>
-    {
-        var forecast = Enumerable.Range(1, 5).Select(index =>
-                new WeatherForecast
-                (
-                    DateOnly.FromDateTime(DateTime.Now.AddDays(index)),
-                    Random.Shared.Next(-20, 55),
-                    summaries[Random.Shared.Next(summaries.Length)]
-                ))
-            .ToArray();
-        return forecast;
-    })
-    .WithName("GetWeatherForecast");
+
+app.MapGet("/tomorrow_weather_forecast", (IWeatherProvider weatherProvider) =>
+{
+    return weatherProvider.GetForecast(DateTime.Now.AddDays(1));
+});
+
+app.MapGet("/today_weather_forecast", (IWeatherProvider weatherProvider) =>
+{
+    return weatherProvider.GetForecast(DateTime.Now);
+});
 
 app.MapGet("/hello", () =>
     {
@@ -41,7 +35,3 @@ app.MapGet("/hello", () =>
 
 app.Run();
 
-record WeatherForecast(DateOnly Date, int TemperatureC, string? Summary)
-{
-    public int TemperatureF => 32 + (int)(TemperatureC / 0.5556);
-}
